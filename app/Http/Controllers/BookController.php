@@ -6,6 +6,8 @@ use App\Models\Book;
 use App\Models\Author;
 use App\Models\Category;
 use Inertia\Inertia;
+
+use Inertia\Response;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -18,13 +20,18 @@ class BookController extends Controller
         ]);
     }
 
+    // public function show($id)
+    // {
+    //     $book = Book::with(['author', 'category'])->findOrFail($id);
+    //    return inertia('Books/show', ['book' => $book]); // use 'show' here
+
+    // }
     public function show($id)
-    {
-        $book = Book::with(['author', 'category'])->findOrFail($id);
-        return Inertia::render('Books/Show', [
-            'book' => $book,
-        ]);
-    }
+{
+    $book = Book::findOrFail($id);
+    return inertia('Books/show', ['book' => $book]); // Ensure casing is correct
+}
+
 
     public function create()
     {
