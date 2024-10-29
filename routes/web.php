@@ -21,6 +21,8 @@ Route::get('/books/{id}', [BookController::class, 'show'])->name('books.show');
 Route::get('/authors', [AuthorController::class, 'index'])->name('authors.index');
 Route::get('/authors/create', [AuthorController::class, 'create'])->name('authors.create');
 Route::post('/authors', [AuthorController::class, 'store'])->name('authors.store');
+Route::post('/authors/{authors}', [AuthorController::class, 'show'])->name('authors.show');
+
 
 // Categories Routes
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
@@ -29,7 +31,9 @@ Route::post('/categories', [CategoryController::class, 'store'])->name('categori
 
 // Reviews Routes
 Route::get('/books/{id}/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+
 Route::get('/books/{id}/reviews/create', [ReviewController::class, 'create'])->name('reviews.create');
+
 Route::post('/books/{id}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
 
